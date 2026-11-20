@@ -1,0 +1,13 @@
+Against the annotated ground truth, all 1 m pixels.
+MAE, RMSE, MAPE: distance to the annotated albedo range (Eqs. 17-18).
+Hit: pixels inside the range. Hit/mat: hit rate averaged over the materials.
+Edge F1: map edges against material boundaries. Order: material pairs in the right order in mixed coarse pixels.
+
+method                   MAE    RMSE   MAPE%   Hit%  Hit/mat%  Edge F1  Order%
+DE, bicubic start     0.0061  0.0173    3.87   76.2      62.3    0.658    72.2
+OpenCV nearest        0.0067  0.0187    4.33   74.0      60.2    0.501    50.0
+OpenCV bicubic        0.0067  0.0186    4.32   73.9      60.0    0.593    71.0
+OpenCV Lanczos-4      0.0066  0.0185    4.29   74.2      60.4    0.595    70.0
+GDAL cubic            0.0065  0.0181    4.20   74.2      60.5    0.583    71.4
+BSRGAN                0.0110  0.0257    8.34   62.5      48.4    0.631    73.4
+ESRGAN                0.0073  0.0197    5.11   70.7      56.9    0.627    72.6

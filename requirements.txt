@@ -1,0 +1,8 @@
+numpy
+scipy
+scikit-learn
+rasterio
+# example/evaluate.py
+opencv-python
+matplotlib
+# optional, for sam_segment.py: torch, segment-anything
