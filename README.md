@@ -2,11 +2,9 @@
 
 Downscaling of satellite broadband albedo to 1 m with an optimization-based approach.
 
-This is an improved version of the method of
-
 > N. Lukač, D. Mongus, M. Bizjak. **Optimization-Based Downscaling of Satellite-Derived Isotropic Broadband Albedo to High Resolution.** *Remote Sensing* 17(8), 1366, 2025. https://doi.org/10.3390/rs17081366
 
-Steps 4 to 6 below are new. Equation numbers in the code refer to the paper.
+Steps 4 to 6 below provide slight improvements of the downscaling algorithm. Equation numbers in the code refer to the paper.
 
 ![Example: Maribor, Slovenia](example/output/example.png)
 
@@ -48,7 +46,6 @@ python example/evaluate.py
 `example/prepare_input.py` documents how these files were made from the original data.
 
 `example/evaluate.py` scores the results against the annotated ground truth and compares them with interpolation of the Sentinel-2 albedo:
-
 - **MAE, RMSE, MAPE:** distance to the annotated albedo range, zero inside the range (Eqs. 17 and 18).
 - **Hit:** share of pixels inside their range. **Hit per material:** the same, averaged over the materials.
 - **Edge F1:** edges of the albedo map against the material boundaries of the ground truth, with 1 px tolerance and the best gradient threshold for every map.
@@ -66,7 +63,7 @@ The scores are also written to `example/output/evaluation.txt`.
 | ESRGAN | 0.0073 | 0.0197 | 5.11 | 70.7 | 56.9 | 0.627 | 72.6 |
 | BSRGAN | 0.0110 | 0.0257 | 8.34 | 62.5 | 48.4 | 0.631 | 73.4 |
 
-**Compared with the paper.** The MAPE of 3.87% is slightly better than the 4.03% published in the paper (RMSE 0.0173 against 0.0179). The code is improved by starting from the bicubic interpolation of the satellite albedo, which keeps the local differences within one material across the scene, for example old and new asphalt, where the paper's method gives every material one albedo for the whole scene.
+The MAPE of 3.87% is slightly better than the 4.03% in the paper. The code is improved by starting from the bicubic interpolation of the satellite albedo, which keeps the local differences within one material across the scene, for example old and new asphalt, where the paper's method gives every material one albedo for the whole scene.
 
 ## Usage
 
